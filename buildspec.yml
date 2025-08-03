@@ -12,7 +12,7 @@ phases:
       - docker tag my-nginx:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/my-nginx:latest
   post_build:
     commands:
-      - docker push <your-account-id>.dkr.ecr.$AWS_REGION.amazonaws.com/my-nginx:latest
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/my-nginx:latest
       - echo Writing image definitions file...
       - printf '[{"name":"nginx","imageUri":"%s"}]' $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/my-nginx:latest > imagedefinitions.json
 artifacts:
